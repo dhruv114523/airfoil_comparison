@@ -4,7 +4,7 @@ This project visualizes aerodynamic performance metrics — specifically the **L
 
 ---
 
-## 📊 What This Script Does
+## What This Script Does
 
 The `01_plot_cl_vs_cd.R` script performs the following:
 
@@ -15,7 +15,7 @@ The `01_plot_cl_vs_cd.R` script performs the following:
 
 ---
 
-## 🛠 Technologies Used
+## Technologies Used
 
 - **R**
 - **ggplot2** for plotting
@@ -23,19 +23,19 @@ The `01_plot_cl_vs_cd.R` script performs the following:
 
 ---
 
-## 📁 File Structure
-project-root/
-│
-├── data/
-│ └── all_naca_cl_vs_cd.csv # Input dataset with Cl, Cd, and AOA values
-│
-├── 01_plot_cl_vs_cd.R # Main script for Cl and Cl/Cd plots
-├── README.md 
+## File Structure
+project-root/  
+│  
+├── data/  
+│ └── all_naca_cl_vs_cd.csv # Input dataset with Cl, Cd, and AOA values  
+│  
+├── 01_plot_cl_vs_cd.R # Main script for Cl and Cl/Cd plots  
+├── README.md   
 
 
 ---
 
-## ▶️ How to Run
+##  How to Run
 
 1. Open `01_plot_cl_vs_cd.R` in RStudio.
 2. Ensure the CSV file is located in the `data/` folder.
