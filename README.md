@@ -24,4 +24,41 @@ The `01_plot_cl_vs_cd.R` script performs the following:
 ---
 
 ## 📁 File Structure
+project-root/
+│
+├── data/
+│ └── all_naca_cl_vs_cd.csv # Input dataset with Cl, Cd, and AOA values
+│
+├── 01_plot_cl_vs_cd.R # Main script for Cl and Cl/Cd plots
+├── README.md 
+
+
+---
+
+## ▶️ How to Run
+
+1. Open `01_plot_cl_vs_cd.R` in RStudio.
+2. Ensure the CSV file is located in the `data/` folder.
+3. Run the script to generate the plots.
+4. The output will display in RStudio's **Plots** panel.
+
+---
+
+##  Notes
+
+- The plots focus on **pre-stall behavior** to highlight efficient operating ranges.
+- All values are based on assumed or experimental aerodynamic data from different AOA values.
+- File paths are relative to ensure compatibility across systems.
+
+---
+
+## Sample Output
+![cl_cd vs AOA](https://github.com/user-attachments/assets/f0c4cc81-b2da-4db8-b64b-a5557885c729)
+
+---
+
+## Author
+
+Dhruv — personal project for airfoil performance comparison.  
+
 
