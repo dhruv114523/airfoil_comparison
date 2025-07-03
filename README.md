@@ -11,7 +11,7 @@ It automates the process of generating airfoil data (CL, CD, CM) over a range of
 - Automatically sweeps angles of attack (0° to 15°) (can be changed as well)
 - Saves results to a clean, structured **CSV file**
 - Handles convergence and output parsing gracefully
-- Fully offline – runs with local `xfoil.exe`
+- Fully offline, runs with local `xfoil.exe`
 
 ---
 
@@ -37,6 +37,6 @@ python airfoil_comparison.py
 - Reynolds Number Variation
 - Confidence Intervals
 
-> Note: Legacy version of this project (which was just some basic graphs) is in the `legacy` folder.
-> While they're considered to be a part of the same project, the two scripts (`airfoil_comparison.py` and `airfoil_comparison.R`) differ wildly in their function.
-> The R script file (under the `legacy` folder) is just for graphs, while the python script is an xfoil.exe wrapper, which will do the simulations for you. It currently does not have plotting capability, but it will be added in a later update
+> Note: Legacy version of this project (which was just some basic graphs) is in the `legacy` folder.  
+> While they're considered to be a part of the same project, the two scripts (`airfoil_comparison.py` and `airfoil_comparison.R`) differ wildly in their function.  
+> The R script file (under the `legacy` folder) is just for graphs, while the python script is an xfoil.exe wrapper, which will do the simulations for you. It currently does not have plotting capability, but it will be added in a later update  
