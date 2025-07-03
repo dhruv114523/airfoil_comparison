@@ -1,64 +1,42 @@
-# Airfoil Cl vs Cd Analysis (NACA 4-Digit Series)
+# Aerodynamic Properties Simulator
 
-This project visualizes aerodynamic performance metrics — specifically the **Lift Coefficient (Cl)** and **Lift-to-Drag Ratio (Cl/Cd)** — for several NACA 4-digit airfoils. The analysis uses real-world data to compare how different airfoil shapes perform across various angles of attack (AOA).
-
----
-
-## What This Script Does
-
-The `01_plot_cl_vs_cd.R` script performs the following:
-
-- **Reads performance data** for airfoils NACA 0009, 0012, and 2412.
-- **Plots Cl vs AOA** for each airfoil to observe lift generation.
-- **Plots Cl/Cd vs AOA** to evaluate aerodynamic efficiency before stall.
-- Visualizes and compares the behavior of each airfoil across identical conditions.
+This is a **Python wrapper** around the XFOIL program that simulates aerodynamic properties of NACA airfoils.  
+It automates the process of generating airfoil data (CL, CD, CM) over a range of angles of attack using XFOIL's command-line interface.
 
 ---
 
-## Technologies Used
+## Features
 
-- **R**
-- **ggplot2** for plotting
-- **Base R** for data manipulation
-
----
-
-## File Structure
-project-root/  
-│  
-├── data/  
-│ └── all_naca_cl_vs_cd.csv # Input dataset with Cl, Cd, and AOA values  
-│  
-├── 01_plot_cl_vs_cd.R # Main script for Cl and Cl/Cd plots  
-├── README.md   
-
+- Supports multiple NACA airfoils (e.g., 2412, 0012, 0009)
+- Automatically sweeps angles of attack (0° to 15°) (can be changed as well)
+- Saves results to a clean, structured **CSV file**
+- Handles convergence and output parsing gracefully
+- Fully offline – runs with local `xfoil.exe`
 
 ---
 
-##  How to Run
+## Requirements
 
-1. Open `01_plot_cl_vs_cd.R` in RStudio.
-2. Ensure the CSV file is located in the `data/` folder.
-3. Run the script to generate the plots.
-4. The output will display in RStudio's **Plots** panel.
-
----
-
-##  Notes
-
-- The plots focus on **pre-stall behavior** to highlight efficient operating ranges.
-- All values are based on assumed or experimental aerodynamic data from different AOA values.
-- File paths are relative to ensure compatibility across systems.
+- Python 3.x
+- A working `xfoil.exe` in your project folder  
+  [Download XFOIL binary](http://web.mit.edu/drela/Public/web/xfoil/bin/xfoil6.99.exe)
 
 ---
 
-## Sample Output
-![cl_cd vs AOA](https://github.com/user-attachments/assets/f0c4cc81-b2da-4db8-b64b-a5557885c729)
+## Usage
 
----
+1. Drop `xfoil.exe` into your project folder.
+2. Run the script:
 
-## Author
+```bash
+python airfoil_comparison.py
+```
 
-Dhruv — personal project for airfoil performance comparison.  
+## Future Improvements Planned
+- Automatic Plots Generation
+- Reynolds Number Variation
+- Confidence Intervals
 
-
+> Note: Legacy version of this project (which was just some basic graphs) is in the `legacy` folder.
+> While they're considered to be a part of the same project, the two scripts (`airfoil_comparison.py` and `airfoil_comparison.R`) differ wildly in their function.
+> The R script file (under the `legacy` folder) is just for graphs, while the python script is an xfoil.exe wrapper, which will do the simulations for you. It currently does not have plotting capability, but it will be added in a later update
