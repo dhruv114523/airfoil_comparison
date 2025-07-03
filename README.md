@@ -39,4 +39,5 @@ python airfoil_comparison.py
 
 > Note: Legacy version of this project (which was just some basic graphs) is in the `legacy` folder.  
 > While they're considered to be a part of the same project, the two scripts (`airfoil_comparison.py` and `airfoil_comparison.R`) differ wildly in their function.  
-> The R script file (under the `legacy` folder) is just for graphs, while the python script is an xfoil.exe wrapper, which will do the simulations for you. It currently does not have plotting capability, but it will be added in a later update  
+> The R script file (under the `legacy` folder) is just for graphs, while the python script is an xfoil.exe wrapper, which will do the simulations for you. It currently does not have plotting capability, but it will be added in a later update
+> If you're here from LinkedIn, and are looking for the script used for the report, it is under the `legacy` folder as well
