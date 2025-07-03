@@ -1,4 +1,8 @@
 # Airfoil Cl vs Cd Analysis (NACA 4-Digit Series)
+# *Disclaimer*
+This is a legacy version, please refer to the python file in the root directory for a robust `xfoil.exe` wrapper
+
+--- 
 
 This project visualizes aerodynamic performance metrics — specifically the **Lift Coefficient (Cl)** and **Lift-to-Drag Ratio (Cl/Cd)** — for several NACA 4-digit airfoils. The analysis uses real-world data to compare how different airfoil shapes perform across various angles of attack (AOA).
 
