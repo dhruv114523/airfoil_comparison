@@ -19,7 +19,7 @@ It automates the process of generating airfoil data (CL, CD, CM) over a range of
 
 - Python 3.x
 - A working `xfoil.exe` in your project folder  
-  [Download XFOIL binary]([http://web.mit.edu/drela/Public/web/xfoil/bin/xfoil6.99.exe](https://web.mit.edu/drela/Public/web/xfoil/))
+  [Download XFOIL binary](https://web.mit.edu/drela/Public/web/xfoil/)
 
 ---
 
