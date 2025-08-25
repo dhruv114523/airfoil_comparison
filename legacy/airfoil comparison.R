@@ -17,8 +17,8 @@ ggplot(df_clean, aes(x = AOA_0009, y = Cl_NACA_0009)) +
   geom_line(color = "black") +
   labs(title = "Lift Coefficient (Cl) vs AOA for Airfoil NACA 0009",
        x = "AOA",
-       y = "Cl (Lift Coefficient)") +
-  theme_classic()
+       y = "Cl (Lift Coefficient)") 
+
 ggsave("images/cl_vs_aoa_0009.png", width = 10, height = 6, dpi = 300)
 
 ggplot(df_clean, aes(x = AOA_0012, y = Cl_NACA_0012)) +
@@ -26,8 +26,7 @@ ggplot(df_clean, aes(x = AOA_0012, y = Cl_NACA_0012)) +
   geom_line(color = "black") +
   labs(title = "Lift Coefficient (Cl) vs AOA for Airfoil NACA 0012",
        x = "AOA",
-       y = "Cl (Lift Coefficient)") +
-  theme_classic()
+       y = "Cl (Lift Coefficient)") 
 ggsave("images/cl_vs_aoa_0012.png", width = 10, height = 6, dpi = 300)
 
 ggplot(df_clean, aes(x = AOA_2412, y = Cl_NACA_2412)) +
@@ -35,8 +34,7 @@ ggplot(df_clean, aes(x = AOA_2412, y = Cl_NACA_2412)) +
   geom_line(color = "black") +
   labs(title = "Lift Coefficient (Cl) vs AOA for Airfoil NACA 2412",
        x = "AOA",
-       y = "Cl (Lift Coefficient)") +
-  theme_classic()
+       y = "Cl (Lift Coefficient)") 
 ggsave("images/cl_vs_aoa_2412.png", width = 10, height = 6, dpi = 300)
 
 # Plot Cl/Cd vs AOA for multiple airfoils
@@ -54,8 +52,7 @@ ggplot() +
        x = "AOA (Angle of Attack)",
        y = "Cl/Cd (Lift-to-Drag Ratio)",
        color = "Airfoil") +
-  xlim(0, 12) +
-  theme_classic()
+  xlim(0, 12) 
 ggsave("images/cl_cd_comparison.png", width = 10, height = 6, dpi = 300)
 
 
@@ -86,8 +83,7 @@ ggplot() +
   labs(title = "Lift Coefficient (Cl) vs AOA",
        x = "Angle of Attack (degrees)",
        y = "Lift Coefficient (Cl)",
-       color = "Airfoil") +
-  theme_classic()
+       color = "Airfoil") 
 ggsave("images/cl_vs_aoa_combined.png", width = 10, height = 6, dpi = 300)
 
 df2 <- read.csv("C:/Users/Dhruv/Documents/CLG/Personal Projects (not Python)/airfoil comparison/0009_var_reynolds.csv")
@@ -103,8 +99,7 @@ ggplot() +
   geom_point(data = df2%>% filter(AOA <= 9), aes(x = AOA, y = cl_cd_200, color = "200,000")) +
   labs(title = "Cl/Cd of NACA 0009 at Varying Reynold's number", 
        x = "AOA", 
-       y = "Cl/Cd") +
-  theme_classic()
+       y = "Cl/Cd") 
 ggsave("images/reynolds_variation_0009.png", width = 10, height = 6, dpi = 300)
 
 df3 <- read.csv("C:/Users/Dhruv/Documents/CLG/Personal Projects (not Python)/airfoil comparison/0012_var_reynolds.csv")
@@ -120,8 +115,7 @@ ggplot() +
   geom_point(data = df3 %>% filter(AOA <= 12 & AOA != 11), aes(x = AOA, y = cl_cd_200, color = "200,000")) +
   labs(title = "Cl/Cd of NACA 0012 at Varying Reynold's number", 
        x = "AOA", 
-       y = "Cl/Cd") +
-  theme_classic()
+       y = "Cl/Cd") 
 ggsave("images/reynolds_variation_0012.png", width = 10, height = 6, dpi = 300)
 
 df4 <- read.csv("C:/Users/Dhruv/Documents/CLG/Personal Projects (not Python)/airfoil comparison/2412_var_reynolds.csv")
@@ -137,8 +131,7 @@ ggplot() +
   geom_point(data = df4 %>% filter(AOA <= 13), aes(x = AOA, y = cl_cd_200, color = "200,000")) +
   labs(title = "Cl/Cd of NACA 2412 at Varying Reynold's number", 
        x = "AOA", 
-       y = "Cl/Cd") +
-  theme_classic()
+       y = "Cl/Cd") 
 ggsave("images/reynolds_variation_2412.png", width = 10, height = 6, dpi = 300)
 
 df5 <- read.csv("C:/Users/Dhruv/Documents/CLG/Personal Projects (not Python)/airfoil comparison/Cm_vs_AOA.csv")
@@ -159,8 +152,7 @@ ggplot() +
   labs(title = "Moment Coefficient (Cm) vs AOA",
        x = "Angle of Attack (degrees)",
        y = "Moment Coefficient (Cm)",
-       color = "Airfoil") +
-  theme_classic()
+       color = "Airfoil") 
 ggsave("images/cm_vs_aoa.png", width = 10, height = 6, dpi = 300)
 
 cm_mean_0009 <- mean(df5$NACA_0009)
