@@ -5,6 +5,7 @@ import numpy as np
 
 airfoils = ["2412", "0012", "0009"]
 aoa_range = range(0, 14)
+np.random.seed(123)
 
 def run_xfoil_batch(airfoil, aoas, reynolds_num, output_file):
     commands = [
