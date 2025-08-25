@@ -7,7 +7,7 @@ import os
 os.makedirs('images_new', exist_ok=True)
 
 # Load data
-df = pd.read_csv("test.csv")
+df = pd.read_csv("airfoil_results.csv")
 df["CL/CD"] = df["CL"] / df["CD"]
 
 # Plot 1: KDE plot for specific airfoil at specific AoA
@@ -32,7 +32,7 @@ for airfoil in df_filtered["Airfoil"].unique():
     plt.title(f"CL/CD Distribution for {airfoil} at AoA = 7° with 95% CI")
     plt.grid(True)
     plt.legend()
-    plt.savefig('images_new/cl_cd_kde.png', dpi=300, bbox_inches='tight')
+    plt.savefig(f'images_new/{airfoil}_cl_cd_kde.png', dpi=300, bbox_inches='tight')
     plt.show()
 
 # Plot 2: Line chart with confidence intervals for all airfoils
