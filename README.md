@@ -70,10 +70,6 @@ Use the included `plots.py` to generate comprehensive visualizations:
 python plots.py
 ```
 
-![Lift Coefficient Plot](images/cl_plot.png) <!-- CL vs Alpha plot -->
-![Drag Coefficient Plot](images/cd_plot.png) <!-- CD vs Alpha plot -->
-![L/D Ratio Plot](images/ld_ratio.png) <!-- L/D vs Alpha plot -->
-
 ---
 
 ## Project Structure
@@ -119,7 +115,7 @@ NACA2412,98234,0,0.123,0.00891,-0.0234
 
 ## Legacy Support
 
-![Legacy Plots](images/legacy_plots.png) <!-- Show legacy R plots -->
+![Legacy Plots](legacy/images/cl_cd_comparison.png) <!-- Show legacy R plots -->
 
 > **Note**: The legacy version (R-based) is preserved in the `legacy/` folder. While part of the same project, the scripts serve different purposes:
 > 
