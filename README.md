@@ -1,12 +1,13 @@
 # Aerodynamic Properties Simulator
 
-![Project Banner](images/banner.png) <!-- Add a banner image showing airfoils -->
+<!-- ![Project Banner](images/banner.png) Add a banner image showing airfoils when available -->
 
 This is a **Python wrapper** around the XFOIL program that simulates aerodynamic properties of NACA airfoils. It automates the process of generating airfoil data (lift coefficient CL, drag coefficient CD, and moment coefficient CM) over a range of angles of attack using XFOIL's command-line interface.
 
 ## Sample Results
 
-![Sample Airfoil Comparison](images/airfoil_comparison.png) <!-- Add comparison plots -->
+![Sample Airfoil Comparison](legacy/images/cl_vs_aoa_combined.png) <!-- Combined CL comparison -->
+![Cl/Cd Comparison](legacy/images/cl_cd_comparison.png) <!-- Cl/Cd ratio comparison -->
 
 ---
 
@@ -35,7 +36,7 @@ This is a **Python wrapper** around the XFOIL program that simulates aerodynamic
 
 ## Quick Start
 
-![Installation Demo](images/installation.gif) <!-- Add installation walkthrough -->
+<!-- ![Installation Demo](images/installation.gif) Add installation walkthrough when available -->
 
 ### 1. Setup
 ```bash
