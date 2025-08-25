@@ -6,8 +6,7 @@ This is a **Python wrapper** around the XFOIL program that simulates aerodynamic
 
 ## Sample Results
 
-![Sample Airfoil Comparison](legacy/images/cl_vs_aoa_combined.png) <!-- Combined CL comparison -->
-![Cl/Cd Comparison](legacy/images/cl_cd_comparison.png) <!-- Cl/Cd ratio comparison -->
+![Sample Airfoil Comparison](images_new\cl_cd_kde.png) 
 
 ---
 
