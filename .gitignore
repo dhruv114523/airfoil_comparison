@@ -8,3 +8,5 @@
 !legacy/
 !legacy/**
 !.gitignore
+!images_new
+!images_new/**

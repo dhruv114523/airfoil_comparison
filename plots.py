@@ -3,7 +3,7 @@ import pandas as pd
 import seaborn as sns
 
 # Load data
-df = pd.read_csv("Personal Projects/airfoils/airfoil_results.csv")
+df = pd.read_csv("airfoil_results.csv")
 df["CL/CD"] = df["CL"] / df["CD"]
 
 # Filter for NACA2412 at AoA = 7°
@@ -13,7 +13,7 @@ print(df["CL/CD"].quantile(0.025))
 print(df["CL/CD"].quantile(0.975))
 # Plot
 plt.figure(figsize=(10, 6))
-sns.kdeplot(data=df, x="CL/CD", fill=True, common_norm=False, palette="viridis")
+sns.kdeplot(data=df, x="CL/CD", fill=True, common_norm=False)
 
 # 95% confidence interval
 lower = df["CL/CD"].quantile(0.025)
@@ -26,5 +26,7 @@ plt.xlabel("CL/CD")
 plt.title("CL/CD Distribution for NACA2412 at AoA = 7° with 95% CI")
 plt.grid(True)
 plt.legend()
+plt.savefig('images_new/cl_cd_kde.png')
 plt.show()
+
 
