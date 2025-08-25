@@ -6,7 +6,7 @@ This is a **Python wrapper** around the XFOIL program that simulates aerodynamic
 
 ## Sample Results
 
-![Sample Airfoil Comparison](images_new\cl_cd_kde.png) 
+![Sample Airfoil Comparison](images_new/cl_cd_kde.png) 
 
 ---
 
