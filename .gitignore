@@ -12,3 +12,6 @@
 !.gitignore
 !images_new
 !images_new/**
+
+.Rdata
+.Rhistory
