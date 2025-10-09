@@ -35,8 +35,6 @@ This is a **Python wrapper** around the XFOIL program that simulates aerodynamic
 
 ## Quick Start
 
-<!-- ![Installation Demo](images/installation.gif) -->
-
 ### 1. Setup
 ```bash
 # Clone the repository
@@ -156,3 +154,7 @@ This project is open source and available under the [MIT License](LICENSE).
 **Dhruv** - [LinkedIn Profile](https://linkedin.com/in/dhruv-ganage/)
 
 Project Link: [https://github.com/dhruv114523/airfoil_comparison](https://github.com/dhruv114523/airfoil_comparison)
+
+# Note
+
+> The graphs currently in the README are incomplete, completed graphs will be added later
