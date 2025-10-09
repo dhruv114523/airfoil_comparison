@@ -93,7 +93,7 @@ with open(r"test.csv", mode='w', newline='') as f:
 
     for airfoil in airfoils:
         print(f"⏳ Running NACA {airfoil}...")
-        reynolds_nums = np.random.normal(loc=100_000, scale=2_000, size=10)  # Set to 10 for testing
+        reynolds_nums = np.random.normal(loc=100_000, scale=2_000, size=10) 
         successful_runs = 0
         
         for i, Re in enumerate(reynolds_nums, start=1):

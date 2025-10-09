@@ -7,7 +7,7 @@ import os
 os.makedirs('images_new', exist_ok=True)
 
 # Load data
-df = pd.read_csv("airfoil_results.csv")
+df = pd.read_csv("test.csv")
 df["CL/CD"] = df["CL"] / df["CD"]
 
 # Plot 1: KDE plot for specific airfoil at specific AoA
@@ -41,18 +41,15 @@ colors = ['blue', 'red', 'green', 'orange', 'purple']
 
 plt.figure(figsize=(10, 6))
 
-# Plot each airfoil as a separate line
 for i, airfoil in enumerate(airfoils):
     airfoil_data = df[df['Airfoil'] == airfoil]
     grouped = airfoil_data.groupby('Alpha')['CL'].agg(['mean', 'std'])
     
-    # Plot mean line
     plt.plot(grouped.index, grouped['mean'], 
              color=colors[i % len(colors)], 
              label=airfoil, 
              linewidth=2)
     
-    # Add confidence interval (fat area around line)
     plt.fill_between(grouped.index, 
                      grouped['mean'] - 1.96*grouped['std'],
                      grouped['mean'] + 1.96*grouped['std'],
@@ -68,4 +65,25 @@ plt.tight_layout()
 
 # Save the plot
 plt.savefig('images_new/cl_vs_alpha_comparison.png', dpi=300, bbox_inches='tight')
+plt.show()
+
+# Plot 3: Line chart of CL vs CD
+grouped = df.groupby(['Airfoil', 'Alpha'])[['CL', 'CD']].mean().reset_index()
+plt.figure(figsize=(10, 6))
+sns.lineplot(data=grouped, x='CD', y='CL', hue='Airfoil')
+plt.savefig('images_new/cl_vs_cd.png')
+plt.show()
+
+# Plot 4: Lift to Drag Ratio vs AoA
+plt.figure(figsize = (10, 6))
+grouped = df.groupby(["Airfoil", "Alpha"])["CL/CD"].mean().reset_index()
+sns.lineplot(data = grouped, x = "Alpha", y = "CL/CD", hue = "Airfoil")
+plt.savefig("images_new/cl_cd_vs_aoa.png")
+plt.show()
+
+# Plot 5: Moment vs Angle of Attack
+plt.figure(figsize = (10, 6))
+grouped = df.groupby(["Airfoil", "Alpha"])["CM"].mean().reset_index()
+sns.lineplot(data = grouped, x = "Alpha", y = "CM", hue = "Airfoil")
+plt.savefig("images_new/cm_vs_aoa.png")
 plt.show()

@@ -1,7 +1,5 @@
-# Ignore everything
 /*
 
-# But keep these files and folders
 !airfoil_comparison.py
 !plots.py
 !README.md

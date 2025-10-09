@@ -1,6 +1,6 @@
 # Aerodynamic Properties Simulator
 
-<!-- ![Project Banner](images/banner.png) Add a banner image showing airfoils when available -->
+<!-- ![Project Banner](images/banner.png) -->
 
 This is a **Python wrapper** around the XFOIL program that simulates aerodynamic properties of NACA airfoils. It automates the process of generating airfoil data (lift coefficient CL, drag coefficient CD, and moment coefficient CM) over a range of angles of attack using XFOIL's command-line interface.
 
@@ -14,7 +14,7 @@ This is a **Python wrapper** around the XFOIL program that simulates aerodynamic
 
 - **Multi-Airfoil Support**: Analyzes multiple NACA airfoils (2412, 0012, 0009) simultaneously
 - **Angle of Attack Sweep**: Automatically sweeps angles from 0° to 14° (customizable range)
-- **Reynolds Number Variation**: Generates multiple simulations with varied Reynolds numbers using statistical distribution
+- **Reynolds Number Variation**: Generates multiple simulations with varied Reynolds numbers using normal distribution
 - **Data Export**: Saves results to clean, structured CSV files for further analysis
 - **Robust Parsing**: Handles XFOIL convergence issues and output parsing gracefully
 - **Offline Operation**: Fully offline, runs with local `xfoil.exe`
@@ -35,7 +35,7 @@ This is a **Python wrapper** around the XFOIL program that simulates aerodynamic
 
 ## Quick Start
 
-<!-- ![Installation Demo](images/installation.gif) Add installation walkthrough when available -->
+<!-- ![Installation Demo](images/installation.gif) -->
 
 ### 1. Setup
 ```bash
@@ -64,11 +64,21 @@ The script generates:
 
 ## Data Visualization
 
-Use the included `plots.py` to generate comprehensive visualizations:
+Use the included `plots.py` to generate visualizations:
 
 ```bash
 python plots.py
 ```
+
+---
+
+## Plots
+
+- KDE plot
+- Line Plot for lift vs AoA with confidence intervals
+- Line Plot for lift vs drag
+- Line Plot for lift to drag Ratio vs AoA
+- Line Plot for moment vs angle of Attack
 
 ---
 
