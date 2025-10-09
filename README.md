@@ -75,10 +75,15 @@ python plots.py
 ## Plots
 
 - KDE plot
+![KDE plot for Lift](images_new/NACA2412_cl_cd_kde.png)
 - Line Plot for lift vs AoA with confidence intervals
+![Lift vs AoA](images_new/cl_vs_alpha_comparison.png)
 - Line Plot for lift vs drag
+![Line Plot for lift vs drag](images_new/cl_vs_cd.png)
 - Line Plot for lift to drag Ratio vs AoA
+![Line Plot for lift to drag Ratio vs AoA](images_new/cl_cd_vs_aoa.png)
 - Line Plot for moment vs angle of Attack
+![Line Plot for moment vs angle of Attack](images_new/cm_vs_aoa.png)
 
 ---
 
