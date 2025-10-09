@@ -134,8 +134,6 @@ NACA2412,98234,0,0.123,0.00891,-0.0234
 > 
 > - **Python Script** (`airfoil_comparison.py`): Full XFOIL wrapper with simulation capabilities
 > - **R Script** (`legacy/airfoil comparison.R`): Basic plotting and analysis tools
->
-> If you're here from LinkedIn looking for the report analysis, check the `legacy/` folder.
 
 ---
 
