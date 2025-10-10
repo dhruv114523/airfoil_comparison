@@ -12,15 +12,17 @@ print(df["Airfoil"].unique())
 print(df.head())
 
 df['Airfoil_Code'] = df['Airfoil'].str.extract(r'(\d{4})')
-df[['M', 'P', 'T', "X"]] = df['Airfoil_Code'].str.split('', expand=True).iloc[:, 1:5]
-df[['M', 'P', 'T', 'X']] = df[['M', 'P', 'T', 'X']].astype(float)
+df['M'] = df['Airfoil_Code'].str[0].astype(float)
+df['P'] = df['Airfoil_Code'].str[1].astype(float)
+df['T'] = df['Airfoil_Code'].str[2:].astype(float)
+df[['M', 'P', 'T']] = df[['M', 'P', 'T']].astype(float)
 
-geometric_df = df.groupby(['Airfoil_Code', 'M', 'P', 'T', 'X', "Alpha"])['CL'].mean().reset_index()
+geometric_df = df.groupby(['Airfoil_Code', 'M', 'P', 'T', "Alpha"])['CL'].mean().reset_index()
 geometric_df.rename(columns={'CL': 'Mean_CL'}, inplace=True)
 
-print(geometric_df[['M','P','T','X','Mean_CL']].corr()['Mean_CL'])
+print(geometric_df[['M','P','T','Mean_CL']].corr()['Mean_CL'])
 
-for var in ['M', 'P', 'T', 'X']:
+for var in ['M', 'P', 'T']:
     plt.figure()
     sns.scatterplot(x=geometric_df[var], y=geometric_df['Mean_CL'])
     sns.regplot(x=geometric_df[var], y=geometric_df['Mean_CL'], scatter=False, ci=None)
@@ -30,7 +32,7 @@ for var in ['M', 'P', 'T', 'X']:
 
 print(df.head())
 
-results_geometry = smf.ols('Mean_CL ~ Alpha + M + P + T + X', data = geometric_df).fit()
+results_geometry = smf.ols('Mean_CL ~ Alpha + M + P + T', data = geometric_df).fit()
 print(results_geometry.summary())
 
 sns.histplot(results_geometry.resid, kde=True)
