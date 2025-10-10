@@ -89,6 +89,14 @@ python plots.py
 
 Uses simulated data to explain effects of each of the NACA digits on Lift. Future improvement of the Linear model incudes adding Top_Xtr and Bot_Xtr to the predictors
 
+Linear model has R^2 of 0.752, with adjusted R^2 being 0.75
+
+## Current Limitations
+
+- Current Model's residuals are correlated, as shown by low Durbin-Watson.
+- Top_Xtr and Bot_Xtr aren't used for the model.
+
+
 ---
 
 ## Project Structure
