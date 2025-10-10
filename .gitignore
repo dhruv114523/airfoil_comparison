@@ -11,6 +11,7 @@
 !images_new
 !images_new/**
 !lm.py
+!MODEL_SUMMARY.md
 
 .Rdata
 .Rhistory

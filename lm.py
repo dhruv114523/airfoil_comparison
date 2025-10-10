@@ -44,3 +44,9 @@ print(dict(zip(labels, bp_test)))
 
 robust_results = results_geometry.get_robustcov_results(cov_type='HC3')
 print(robust_results.summary())
+
+with open("MODEL_SUMMARY.md", "w") as f:
+    f.write("## Linear Regression Summary\n\n")
+    f.write("```\n")  # Markdown code block
+    f.write(results_geometry.summary().as_text())
+    f.write("\n```")
