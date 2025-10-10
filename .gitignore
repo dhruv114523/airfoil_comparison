@@ -10,6 +10,7 @@
 !.gitignore
 !images_new
 !images_new/**
+!lm.py
 
 .Rdata
 .Rhistory

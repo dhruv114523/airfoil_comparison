@@ -7,7 +7,7 @@ import os
 os.makedirs('images_new', exist_ok=True)
 
 # Load data
-df = pd.read_csv("test.csv")
+df = pd.read_csv("airfoil_results.csv")
 df["CL/CD"] = df["CL"] / df["CD"]
 
 # Plot 1: KDE plot for specific airfoil at specific AoA

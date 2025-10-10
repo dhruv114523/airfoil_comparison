@@ -3,7 +3,12 @@ import csv
 import os
 import numpy as np
 
-airfoils = ["2412", "0012", "0009"]
+airfoils = ["2412", "0012", "0009", "0015", "4412", "2424", "6412", "2309", # 2-3 in the original, added more for lm model
+            "0006", "0021", "1410", "2408", "3415", "4409", "7412", "2418",
+            "2212", "2512", "5412", "1210", "2416", "6218", "8515", "0112",
+            "0212", "0312", "0512", "0612", "0712", "0812", "0912", "2312", 
+            "3312", "4312", "5312", "6312", "7312", "8312", "9312", "2420",
+            "4415", "4421", "6409", "6415", "7421", "8421"]
 aoa_range = range(0, 14)
 np.random.seed(123)
 
@@ -87,13 +92,13 @@ def ordinal(n):
     return f"{n}{suffix}"
 
 # Final combined output
-with open(r"test.csv", mode='w', newline='') as f:
+with open(r"LM.csv", mode='w', newline='') as f:
     writer = csv.writer(f)
     writer.writerow(["Airfoil", "Reynolds", "Alpha", "CL", "CD", "CM"])
 
     for airfoil in airfoils:
         print(f"⏳ Running NACA {airfoil}...")
-        reynolds_nums = np.random.normal(loc=100_000, scale=2_000, size=10) 
+        reynolds_nums = np.random.normal(loc=100_000, scale=0, size=1) 
         successful_runs = 0
         
         for i, Re in enumerate(reynolds_nums, start=1):

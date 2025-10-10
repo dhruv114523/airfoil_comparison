@@ -85,6 +85,12 @@ python plots.py
 
 ---
 
+## Linear Model
+
+Uses simulated data to explain effects of each of the NACA digits on Lift. Future improvement of the Linear model incudes adding Top_Xtr and Bot_Xtr to the predictors
+
+---
+
 ## Project Structure
 
 ```
@@ -136,10 +142,6 @@ NACA2412,98234,0,0.123,0.00891,-0.0234
 > - **R Script** (`legacy/airfoil comparison.R`): Basic plotting and analysis tools
 
 ---
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
