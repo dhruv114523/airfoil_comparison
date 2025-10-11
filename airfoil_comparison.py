@@ -21,7 +21,7 @@ def run_xfoil_batch(airfoil, aoas, reynolds_num, output_file):
         "ITER 100",
         "PACC",
         output_file,
-        "",  # blank line = no dump file
+        ""
     ]
     for alpha in aoas:
         commands.append(f"ALFA {alpha}")
@@ -38,20 +38,20 @@ def run_xfoil_batch(airfoil, aoas, reynolds_num, output_file):
         stdout, stderr = process.communicate('\n'.join(commands) + '\n\n', timeout=30)
         
         if process.returncode != 0:
-            print(f"⚠️  XFOIL returned error code {process.returncode} for NACA {airfoil}, Re={reynolds_num}")
+            print(f"XFOIL returned error code {process.returncode} for NACA {airfoil}, Re={reynolds_num}")
             return False
         
         return True
         
     except subprocess.TimeoutExpired:
-        print(f"⚠️  XFOIL timed out for NACA {airfoil}, Re={reynolds_num}")
+        print(f"XFOIL timed out for NACA {airfoil}, Re={reynolds_num}")
         process.kill()
         return False
     except FileNotFoundError:
         print("❌ XFOIL executable not found! Make sure xfoil.exe is in the project directory.")
         return False
     except Exception as e:
-        print(f"⚠️  Unexpected error running XFOIL for NACA {airfoil}, Re={reynolds_num}: {e}")
+        print(f"Unexpected error running XFOIL for NACA {airfoil}, Re={reynolds_num}: {e}")
         return False
 
 def parse_polar_file(filepath, airfoil_name, reynolds_num):
@@ -72,16 +72,27 @@ def parse_polar_file(filepath, airfoil_name, reynolds_num):
                             cl = float(parts[1])
                             cd = float(parts[2])
                             cm = float(parts[4])
-                            results.append([airfoil_name, reynolds_num, alpha, cl, cd, cm])
+                            top_xtr = float(parts[5])
+                            bot_xtr = float(parts[6])
+                            results.append([
+                                airfoil_name,
+                                reynolds_num,
+                                alpha,
+                                cl,
+                                cd,
+                                cm,
+                                top_xtr,
+                                bot_xtr
+                            ])
                         except ValueError:
                             continue
         return results
         
     except FileNotFoundError:
-        print(f"⚠️  Polar file not found for {airfoil_name}, Re={reynolds_num}")
+        print(f"Polar file not found for {airfoil_name}, Re={reynolds_num}")
         return []
     except Exception as e:
-        print(f"⚠️  Error parsing polar file for {airfoil_name}, Re={reynolds_num}: {e}")
+        print(f"Error parsing polar file for {airfoil_name}, Re={reynolds_num}: {e}")
         return []
 
 def ordinal(n):
@@ -94,7 +105,7 @@ def ordinal(n):
 # Final combined output
 with open(r"LM.csv", mode='w', newline='') as f:
     writer = csv.writer(f)
-    writer.writerow(["Airfoil", "Reynolds", "Alpha", "CL", "CD", "CM"])
+    writer.writerow(["Airfoil", "Reynolds", "Alpha", "CL", "CD", "CM", "TopXtr", "BotXtr"])
 
     for airfoil in airfoils:
         print(f"⏳ Running NACA {airfoil}...")

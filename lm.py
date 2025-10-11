@@ -6,7 +6,7 @@ from statsmodels.stats.diagnostic import het_breuschpagan
 
 df = pd.read_csv("LM.csv")
 
-df = df.groupby(["Alpha", "Airfoil"])["CL"].mean().reset_index()
+df = df.groupby(["Alpha", "Airfoil"], as_index=False)[["CL", "TopXtr", "BotXtr"]].mean()
 
 print(df["Airfoil"].unique())
 print(df.head())
@@ -17,7 +17,7 @@ df['P'] = df['Airfoil_Code'].str[1].astype(float)
 df['T'] = df['Airfoil_Code'].str[2:].astype(float)
 df[['M', 'P', 'T']] = df[['M', 'P', 'T']].astype(float)
 
-geometric_df = df.groupby(['Airfoil_Code', 'M', 'P', 'T', "Alpha"])['CL'].mean().reset_index()
+geometric_df = df.groupby(['Airfoil_Code', 'M', 'P', 'T', "Alpha"])[['CL', 'TopXtr', "BotXtr"]].mean().reset_index()
 geometric_df.rename(columns={'CL': 'Mean_CL'}, inplace=True)
 
 print(geometric_df[['M','P','T','Mean_CL']].corr()['Mean_CL'])
@@ -32,7 +32,7 @@ for var in ['M', 'P', 'T']:
 
 print(df.head())
 
-results_geometry = smf.ols('Mean_CL ~ Alpha + M + P + T', data = geometric_df).fit()
+results_geometry = smf.ols('Mean_CL ~ Alpha + M + P + T + TopXtr + BotXtr', data = geometric_df).fit()
 print(results_geometry.summary())
 
 sns.histplot(results_geometry.resid, kde=True)
@@ -49,6 +49,24 @@ print(robust_results.summary())
 
 with open("MODEL_SUMMARY.md", "w") as f:
     f.write("## Linear Regression Summary\n\n")
-    f.write("```\n")  # Markdown code block
+    f.write("```\n")  
     f.write(results_geometry.summary().as_text())
+    f.write("\n```")
+
+import statsmodels.api as sm
+from statsmodels.regression.linear_model import GLSAR
+
+y = geometric_df['Mean_CL']
+X = geometric_df[['Alpha', 'M', 'P', 'T', 'TopXtr', 'BotXtr']]
+X = sm.add_constant(X)  
+
+glsar_model = GLSAR(y, X, rho=1)
+glsar_results = glsar_model.iterative_fit(maxiter=10)
+
+print(glsar_results.summary())
+
+with open("MODEL_SUMMARY_GLS.md", "w") as f:
+    f.write("## Linear Regression Summary GLS\n\n")
+    f.write("```\n") 
+    f.write(glsar_results.summary().as_text())
     f.write("\n```")

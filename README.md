@@ -2,7 +2,9 @@
 
 <!-- ![Project Banner](images/banner.png) -->
 
-This is a **Python wrapper** around the XFOIL program that simulates aerodynamic properties of NACA airfoils. It automates the process of generating airfoil data (lift coefficient CL, drag coefficient CD, and moment coefficient CM) over a range of angles of attack using XFOIL's command-line interface.
+`airfoil_comparison.py` is a **Python wrapper** around the XFOIL program that simulates aerodynamic properties of NACA airfoils. It automates the process of generating airfoil data (lift coefficient CL, drag coefficient CD, and moment coefficient CM) over a range of angles of attack using XFOIL's command-line interface.
+
+`plots.py` is a data visualization and analysis script for the results received from the aforementioned `airfoil_comparison.py`. It features KDE plots, 
 
 ## Sample Results
 
@@ -85,7 +87,9 @@ python plots.py
 
 ---
 
-## Linear Model
+## Linear Model (Work in Progress)
+
+Use `lm.py` for the linear model
 
 Uses simulated data to explain effects of each of the NACA digits on Lift. Future improvement of the Linear model incudes adding Top_Xtr and Bot_Xtr to the predictors
 
@@ -93,8 +97,10 @@ Linear model has R^2 of 0.752, with adjusted R^2 being 0.75
 
 ## Current Limitations
 
-- Current Model's residuals are correlated, as shown by low Durbin-Watson.
-- Top_Xtr and Bot_Xtr aren't used for the model.
+- Current Model's residuals are correlated, as shown by low Durbin-Watson. (improved from 0.4 to 1.7)
+- Top_Xtr and Bot_Xtr aren't used for the model. (Now included)
+- Non normal residuals 
+- Squared transformation required to accurately predict post stall behaviour
 
 
 ---
@@ -133,10 +139,7 @@ NACA2412,98234,0,0.123,0.00891,-0.0234
 
 ## Future Enhancements
 
-- [ ] **Multi-threading**: Parallel processing for faster execution
 - [ ] **GUI Interface**: User-friendly graphical interface
-- [ ] **Advanced Statistics**: Confidence intervals and error analysis
-- [ ] **Custom Airfoils**: Support for user-defined airfoil coordinates
 
 ---
 
@@ -162,7 +165,3 @@ This project is open source and available under the [MIT License](LICENSE).
 **Dhruv** - [LinkedIn Profile](https://linkedin.com/in/dhruv-ganage/)
 
 Project Link: [https://github.com/dhruv114523/airfoil_comparison](https://github.com/dhruv114523/airfoil_comparison)
-
-# Note
-
-> The graphs currently in the README are incomplete, completed graphs will be added later
