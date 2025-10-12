@@ -97,7 +97,7 @@ Linear model has R^2 of 0.752, with adjusted R^2 being 0.75
 
 ## Current Limitations
 
-- Current Model's residuals are correlated, as shown by low Durbin-Watson. (improved from 0.4 to 1.7)
+- Current Model's residuals are correlated, as shown by low Durbin-Watson. (improved from 0.4 to 1.7 after using GLS instead of OLS)
 - Top_Xtr and Bot_Xtr aren't used for the model. (Now included)
 - Non normal residuals 
 - Squared transformation required to accurately predict post stall behaviour
@@ -130,8 +130,8 @@ airfoil_comparison/
 
 ### Output Format
 ```csv
-Airfoil,Reynolds,Alpha,CL,CD,CM
-NACA2412,98234,0,0.123,0.00891,-0.0234
+Airfoil,Reynolds,Alpha,CL,CD,CM,TopXtr,BotXtr
+NACA2412,100000,0.0,0.2731,0.01663,-0.0681,0.8966,1.0
 ...
 ```
 
@@ -145,11 +145,11 @@ NACA2412,98234,0,0.123,0.00891,-0.0234
 
 ## Legacy Support
 
-![Legacy Plots](legacy/images/cl_cd_comparison.png) <!-- Show legacy R plots -->
+![Legacy Plots](legacy/images/cl_cd_comparison.png)
 
 > **Note**: The legacy version (R-based) is preserved in the `legacy/` folder. While part of the same project, the scripts serve different purposes:
 > 
-> - **Python Script** (`airfoil_comparison.py`): Full XFOIL wrapper with simulation capabilities
+> - **Python Script** (`airfoil_comparison.py`): Full XFOIL wrapper with simulation capabilities, with a linear model and plotting
 > - **R Script** (`legacy/airfoil comparison.R`): Basic plotting and analysis tools
 
 ---

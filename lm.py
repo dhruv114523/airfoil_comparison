@@ -19,6 +19,8 @@ df[['M', 'P', 'T']] = df[['M', 'P', 'T']].astype(float)
 
 geometric_df = df.groupby(['Airfoil_Code', 'M', 'P', 'T', "Alpha"])[['CL', 'TopXtr', "BotXtr"]].mean().reset_index()
 geometric_df.rename(columns={'CL': 'Mean_CL'}, inplace=True)
+geometric_df['Alpha2'] = geometric_df['Alpha']**2
+geometric_df["Alpha*M"] = geometric_df["Alpha"] * geometric_df["M"]
 
 print(geometric_df[['M','P','T','Mean_CL']].corr()['Mean_CL'])
 
@@ -32,7 +34,7 @@ for var in ['M', 'P', 'T']:
 
 print(df.head())
 
-results_geometry = smf.ols('Mean_CL ~ Alpha + M + P + T + TopXtr + BotXtr', data = geometric_df).fit()
+results_geometry = smf.ols('Mean_CL ~ Alpha + I(Alpha**2) + M + P + T + TopXtr + BotXtr', data = geometric_df).fit()
 print(results_geometry.summary())
 
 sns.histplot(results_geometry.resid, kde=True)
@@ -57,7 +59,7 @@ import statsmodels.api as sm
 from statsmodels.regression.linear_model import GLSAR
 
 y = geometric_df['Mean_CL']
-X = geometric_df[['Alpha', 'M', 'P', 'T', 'TopXtr', 'BotXtr']]
+X = geometric_df[['Alpha', 'Alpha2', 'Alpha*M', 'M', 'T', 'TopXtr']]
 X = sm.add_constant(X)  
 
 glsar_model = GLSAR(y, X, rho=1)
@@ -70,3 +72,13 @@ with open("MODEL_SUMMARY_GLS.md", "w") as f:
     f.write("```\n") 
     f.write(glsar_results.summary().as_text())
     f.write("\n```")
+
+sm.qqplot(results_geometry.resid, line='45')
+plt.title("QQ Plot of Residuals")
+plt.show()
+
+sns.residplot(x=results_geometry.fittedvalues, y=results_geometry.resid, lowess=True)
+plt.xlabel("Fitted Values")
+plt.ylabel("Residuals")
+plt.title("Residuals vs Fitted Values")
+plt.show()
