@@ -23,8 +23,12 @@ for airfoil in df_filtered["Airfoil"].unique():
     sns.kdeplot(data=df_temp, x="CL/CD", fill=True, common_norm=False)
 
     # 95% confidence interval
-    lower = df_temp["CL/CD"].quantile(0.025)
-    upper = df_temp["CL/CD"].quantile(0.975)
+    mean = df_temp["CL/CD"].mean()
+    std = df_temp["CL/CD"].std()
+    n = len(df_temp)
+    se = std / (n ** 0.5)
+    lower = mean - 1.96 * se
+    upper = mean + 1.96 * se
     plt.axvline(lower, color='red', linestyle='--', label='2.5% percentile')
     plt.axvline(upper, color='red', linestyle='--', label='97.5% percentile')
 

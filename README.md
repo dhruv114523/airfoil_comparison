@@ -114,7 +114,20 @@ airfoil_comparison/
 ├── legacy/                  # Legacy R-based analysis
 │   └── airfoil comparison.R # Original R script for basic graphs
 ├── README.md               # This file
-└── xfoil.exe              # XFOIL executable (user-provided)
+├── xfoil.exe              # XFOIL executable
+├── lm.py                  # Linear model
+├── MODEL_SUMMARY.md       # Summary of OLS Linear Model
+└── MODEL_SUMMARY_GLS.md   # Summary of GLS Linear Model
+```
+## Data Flow Diagram
+
+```mermaid
+flowchart LR
+    A[airfoil_comparison.py] -->|Generates| B[(test.csv)]
+    B -->|Used for Visualization| C[plots.py]
+    B -->|Used for Modeling| D[lm.py]
+    C -->|Outputs| E[Plots (PNG)]
+    D -->|Outputs| F[Model Summaries (MD)]
 ```
 
 ---
