@@ -44,7 +44,7 @@ git clone https://github.com/dhruv114523/airfoil_comparison.git
 cd airfoil_comparison
 
 # Install dependencies
-pip install numpy
+pip install -r requirements.txt
 ```
 
 ### 2. Add XFOIL
@@ -138,7 +138,7 @@ flowchart LR
 - **Airfoils**: NACA 2412, 0012, 0009
 - **Reynolds Numbers**: Normal distribution (μ=100,000, σ=2,000), 10 samples per airfoil (for testing)
 - **Angle Range**: 0° to 14° (1° increments)
-- **Viscous Analysis**: Enabled with Ncrit=9
+- **Viscous Analysis**: Enabled with Ncrit = 9
 - **Iteration Limit**: 100 iterations per point
 
 ### Output Format
