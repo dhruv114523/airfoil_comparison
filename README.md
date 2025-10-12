@@ -126,8 +126,8 @@ flowchart LR
     A[airfoil_comparison.py] -->|Generates| B[(test.csv)]
     B -->|Used for Visualization| C[plots.py]
     B -->|Used for Modeling| D[lm.py]
-    C -->|Outputs| E[Plots (PNG)]
-    D -->|Outputs| F[Model Summaries (MD)]
+    C -->|Outputs| E["Plots (PNG)"]
+    D -->|Outputs| F["Model Summaries (MD)"]
 ```
 
 ---
