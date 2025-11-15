@@ -87,20 +87,79 @@ python plots.py
 
 ---
 
-## Linear Model (Work in Progress)
+## Linear Model
 
-Use `lm.py` for the linear model
+Uses simulated data to explain effects of NACA geometry parameters on lift coefficient (`Mean_CL`). Two models are compared to address residual autocorrelation.
 
-Uses simulated data to explain effects of each of the NACA digits on Lift. Future improvement of the Linear model incudes adding Top_Xtr and Bot_Xtr to the predictors
+### Model Specifications
 
-Linear model has R^2 of 0.752, with adjusted R^2 being 0.75
+#### OLS (Ordinary Least Squares)
+**Predictors**: `Alpha`, `Alpha²`, `M`, `P`, `T`, `TopXtr`, `BotXtr`
 
-## Current Limitations
+#### GLS (Generalized Least Squares with AR(1))
+**Predictors**: `Alpha`, `Alpha²`, `Alpha*M`, `M`, `T`, `TopXtr`  
+**Changes from OLS**: Removed `P` (statistically insignificant, p=0.478) and `BotXtr` (p=0.400); added `Alpha*M` interaction term.
 
-- Current Model's residuals are correlated, as shown by low Durbin-Watson. (improved from 0.4 to 1.7 after using GLS instead of OLS)
-- Top_Xtr and Bot_Xtr aren't used for the model. (Now included)
-- Non normal residuals 
-- Squared transformation required to accurately predict post stall behaviour
+### Model Performance Comparison
+
+| Metric | OLS | GLS (Improved) |
+|--------|-----|----------------|
+| **R²** | 0.735 | **0.784**  |
+| **Adjusted R²** | 0.731 | **0.782**  |
+| **RMSE** | 0.1915 | 0.2052  |
+| **MAE** | 0.1376 | 0.1553  |
+| **Durbin-Watson** | 0.403 ❌ | **1.771**  |
+| **AIC** | -253.4 | **-872.3**  |
+
+**Key Findings**:
+- **GLS dramatically improves autocorrelation** (DW: 0.403 → 1.771, near ideal value of 2)
+- **Better model fit** (R²: 0.735 → 0.784) and information criterion (AIC: -253 → -872)
+- **Higher prediction error** (RMSE/MAE increased) suggests GLS trades point accuracy for better statistical properties
+- The `Alpha*M` interaction term is marginally insignificant (p=0.174) but retained for theoretical reasons
+
+### Significant Predictors (GLS Model)
+
+| Variable | Coefficient | Interpretation | p-value |
+|----------|-------------|----------------|---------|
+| `Alpha` | +0.1232 | Base lift increase per degree | <0.001 *** |
+| `Alpha²` | -0.0064 | Stall behavior (nonlinear effect) | <0.001 *** |
+| `M` | +0.0655 | Max camber effect | <0.001 *** |
+| `T` | -0.0251 | Thickness reduces lift (thicker = lower CL) | <0.001 *** |
+| `TopXtr` | -0.3100 | Earlier top transition reduces lift | <0.001 *** |
+| `Alpha*M` | +0.0009 | Camber amplifies AoA effect | 0.174 (ns) |
+| `P` | (removed) | Position insignificant in OLS | 0.478 |
+| `BotXtr` | (removed) | Bottom transition insignificant | 0.400 |
+
+### Diagnostic Plots
+
+Generated in `lm_plots/`:
+- **Residual histogram** (`residuals_hist.png`) - Shows non-normal distribution
+- **Geometry correlations** (`{M,P,T}_vs_cl.png`) - Linear relationships with lift
+- **QQ plot** - Reveals heavy tails (kurtosis = 9.9 in GLS)
+- **Residuals vs Fitted** - Checks for heteroscedasticity (addressed with HC3 robust SE)
+
+### Statistical Diagnostics
+
+#### Heteroscedasticity (OLS)
+- Breusch-Pagan test: LM = 232.89, p < 0.001 ❌
+- **Solution**: HC3 robust standard errors applied (confidence intervals widened appropriately)
+
+#### Multicollinearity
+- High condition number (1080) in GLS
+- Likely due to `Alpha` and `Alpha²` correlation (expected, theoretically justified)
+- VIF analysis recommended
+
+#### Residual Non-Normality
+- Jarque-Bera test: JB = 1273.06, p < 0.001 ❌
+- High kurtosis (9.9) indicates outliers/heavy tails
+- Likely caused by post-stall regime (AoA > 12°)
+
+### Current Limitations
+
+1. **Post-stall underprediction**: Quadratic `Alpha²` term insufficient for high AoA (>12°) behavior
+2. **Non-normal residuals**: Heavy tails suggest piecewise regression or robust methods needed
+3. **Multicollinearity warning**: Condition number >1000 (acceptable given polynomial terms)
+4. **GLS RMSE trade-off**: Better R² but worse point predictions vs OLS
 
 
 ---
@@ -123,11 +182,15 @@ airfoil_comparison/
 
 ```mermaid
 flowchart LR
-    A[airfoil_comparison.py] -->|Generates| B[(test.csv)]
-    B -->|Used for Visualization| C[plots.py]
-    B -->|Used for Modeling| D[lm.py]
-    C -->|Outputs| E["Plots (PNG)"]
-    D -->|Outputs| F["Model Summaries (MD)"]
+    A[airfoil_comparison.py] -->|Generates| B[(LM.csv)]
+    B --> C[lm.py]
+    C -->|OLS Model| D[MODEL_SUMMARY.md]
+    C -->|GLS Model| E[MODEL_SUMMARY_GLS.md]
+    C -->|Diagnostics| F[lm_plots/*.png]
+    
+    A2[airfoil_comparison.py] -->|Generates| B2[(airfoil_results.csv)]
+    B2 --> C2[plots.py]
+    C2 -->|Visualizations| D2[images_new/*.png]
 ```
 
 ---

@@ -8,8 +8,10 @@ airfoils = ["2412", "0012", "0009", "0015", "4412", "2424", "6412", "2309", # 2-
             "2212", "2512", "5412", "1210", "2416", "6218", "8515", "0112",
             "0212", "0312", "0512", "0612", "0712", "0812", "0912", "2312", 
             "3312", "4312", "5312", "6312", "7312", "8312", "9312", "2420",
-            "4415", "4421", "6409", "6415", "7421", "8421"]
+            "4415", "4421", "6409", "6415", "7421", "8421", "1212", "1213"]
+
 aoa_range = range(0, 14)
+
 np.random.seed(123)
 
 def run_xfoil_batch(airfoil, aoas, reynolds_num, output_file):
@@ -29,7 +31,7 @@ def run_xfoil_batch(airfoil, aoas, reynolds_num, output_file):
 
     try:
         process = subprocess.Popen(
-            [r"C:\Pyhton\PyCharm Community Edition 2024.2.1\Files\WEbScraping\Personal Projects\airfoils\xfoil.exe"],
+            ["xfoil.exe"],
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
@@ -71,6 +73,7 @@ def parse_polar_file(filepath, airfoil_name, reynolds_num):
                             alpha = float(parts[0])
                             cl = float(parts[1])
                             cd = float(parts[2])
+                            cdp = float(parts[3])
                             cm = float(parts[4])
                             top_xtr = float(parts[5])
                             bot_xtr = float(parts[6])
@@ -109,7 +112,7 @@ with open(r"LM.csv", mode='w', newline='') as f:
 
     for airfoil in airfoils:
         print(f"⏳ Running NACA {airfoil}...")
-        reynolds_nums = np.random.normal(loc=100_000, scale=0, size=1) 
+        reynolds_nums = np.random.normal(loc = 100_000, scale = 20_000, size=1) #change size to number of samples
         successful_runs = 0
         
         for i, Re in enumerate(reynolds_nums, start=1):

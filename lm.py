@@ -82,3 +82,30 @@ plt.xlabel("Fitted Values")
 plt.ylabel("Residuals")
 plt.title("Residuals vs Fitted Values")
 plt.show()
+
+from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
+import numpy as np
+
+y_true = geometric_df['Mean_CL']
+y_pred_ols = results_geometry.fittedvalues
+
+rmse_ols = np.sqrt(mean_squared_error(y_true, y_pred_ols))
+mae_ols = mean_absolute_error(y_true, y_pred_ols)
+r2_ols = r2_score(y_true, y_pred_ols)
+
+print("OLS Regression Metrics:")
+print(f"RMSE: {rmse_ols:.4f}")
+print(f"MAE: {mae_ols:.4f}")
+print(f"R²: {r2_ols:.4f}")
+
+# --- For GLSAR ---
+y_pred_glsar = glsar_results.fittedvalues
+
+rmse_glsar = np.sqrt(mean_squared_error(y_true, y_pred_glsar))
+mae_glsar = mean_absolute_error(y_true, y_pred_glsar)
+r2_glsar = r2_score(y_true, y_pred_glsar)
+
+print("\nGLSAR Regression Metrics:")
+print(f"RMSE: {rmse_glsar:.4f}")
+print(f"MAE: {mae_glsar:.4f}")
+print(f"R²: {r2_glsar:.4f}")

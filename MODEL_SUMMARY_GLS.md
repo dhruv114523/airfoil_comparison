@@ -3,30 +3,30 @@
 ```
                            GLSAR Regression Results                           
 ==============================================================================
-Dep. Variable:                Mean_CL   R-squared:                       0.857
-Model:                          GLSAR   Adj. R-squared:                  0.856
-Method:                 Least Squares   F-statistic:                     569.0
-Date:                Sun, 12 Oct 2025   Prob (F-statistic):          1.92e-236
-Time:                        17:56:42   Log-Likelihood:                 560.81
-No. Observations:                 575   AIC:                            -1108.
-Df Residuals:                     568   BIC:                            -1077.
+Dep. Variable:                Mean_CL   R-squared:                       0.784
+Model:                          GLSAR   Adj. R-squared:                  0.782
+Method:                 Least Squares   F-statistic:                     343.2
+Date:                Sat, 15 Nov 2025   Prob (F-statistic):          3.06e-185
+Time:                        16:10:36   Log-Likelihood:                 443.13
+No. Observations:                 575   AIC:                            -872.3
+Df Residuals:                     568   BIC:                            -841.8
 Df Model:                           6                                         
 Covariance Type:            nonrobust                                         
 ==============================================================================
                  coef    std err          t      P>|t|      [0.025      0.975]
 ------------------------------------------------------------------------------
-const          0.1990      0.076      2.635      0.009       0.051       0.347
-Alpha          0.1466      0.009     16.415      0.000       0.129       0.164
-Alpha2        -0.0058      0.001    -11.290      0.000      -0.007      -0.005
-Alpha*M       -0.0031      0.001     -5.215      0.000      -0.004      -0.002
-M              0.0888      0.008     10.740      0.000       0.073       0.105
-T             -0.0094      0.003     -3.241      0.001      -0.015      -0.004
-TopXtr        -0.0115      0.061     -0.188      0.851      -0.132       0.109
+const          0.6930      0.094      7.406      0.000       0.509       0.877
+Alpha          0.1232      0.011     11.092      0.000       0.101       0.145
+Alpha2        -0.0064      0.001     -9.978      0.000      -0.008      -0.005
+Alpha*M        0.0009      0.001      1.361      0.174      -0.000       0.002
+M              0.0655      0.011      5.825      0.000       0.043       0.088
+T             -0.0251      0.004     -6.949      0.000      -0.032      -0.018
+TopXtr        -0.3100      0.071     -4.371      0.000      -0.449      -0.171
 ==============================================================================
-Omnibus:                      292.879   Durbin-Watson:                   1.910
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):             4164.058
-Skew:                          -1.889   Prob(JB):                         0.00
-Kurtosis:                      15.631   Cond. No.                     1.08e+03
+Omnibus:                      178.153   Durbin-Watson:                   1.771
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             1273.056
+Skew:                          -1.170   Prob(JB):                    3.63e-277
+Kurtosis:                       9.904   Cond. No.                     1.08e+03
 ==============================================================================
 
 Notes:
