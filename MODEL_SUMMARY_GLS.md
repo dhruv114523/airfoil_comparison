@@ -6,8 +6,8 @@
 Dep. Variable:                Mean_CL   R-squared:                       0.784
 Model:                          GLSAR   Adj. R-squared:                  0.782
 Method:                 Least Squares   F-statistic:                     343.2
-Date:                Sat, 15 Nov 2025   Prob (F-statistic):          3.06e-185
-Time:                        16:10:36   Log-Likelihood:                 443.13
+Date:                Thu, 27 Aug 2026   Prob (F-statistic):          3.06e-185
+Time:                        21:03:51   Log-Likelihood:                 443.13
 No. Observations:                 575   AIC:                            -872.3
 Df Residuals:                     568   BIC:                            -841.8
 Df Model:                           6                                         

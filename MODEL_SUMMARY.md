@@ -6,8 +6,8 @@
 Dep. Variable:                Mean_CL   R-squared:                       0.735
 Model:                            OLS   Adj. R-squared:                  0.731
 Method:                 Least Squares   F-statistic:                     224.5
-Date:                Sat, 15 Nov 2025   Prob (F-statistic):          5.10e-159
-Time:                        16:10:35   Log-Likelihood:                 134.72
+Date:                Thu, 27 Aug 2026   Prob (F-statistic):          5.10e-159
+Time:                        21:03:50   Log-Likelihood:                 134.72
 No. Observations:                 576   AIC:                            -253.4
 Df Residuals:                     568   BIC:                            -218.6
 Df Model:                           7                                         
