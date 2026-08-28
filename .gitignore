@@ -10,8 +10,6 @@
 !.gitignore
 !images_new
 !images_new/**
-!MODEL_SUMMARY.md
-!MODEL_SUMMARY_GLS.md
 !tree.py
 
 .Rdata
