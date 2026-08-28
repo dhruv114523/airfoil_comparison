@@ -10,7 +10,6 @@
 !.gitignore
 !images_new
 !images_new/**
-!lm.py
 !MODEL_SUMMARY.md
 !MODEL_SUMMARY_GLS.md
 
