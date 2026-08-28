@@ -12,6 +12,7 @@
 !images_new/**
 !MODEL_SUMMARY.md
 !MODEL_SUMMARY_GLS.md
+!tree.py
 
 .Rdata
 .Rhistory
