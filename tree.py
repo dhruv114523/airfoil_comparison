@@ -24,8 +24,6 @@ df[['M', 'P', 'T']] = df[['M', 'P', 'T']].astype(float)
 
 geometric_df = df.groupby(['Airfoil_Code', 'M', 'P', 'T', "Alpha"])[['CL', 'TopXtr', "BotXtr"]].mean().reset_index()
 geometric_df.rename(columns={'CL': 'Mean_CL'}, inplace=True)
-geometric_df['Alpha2'] = geometric_df['Alpha']**2
-geometric_df["Alpha*M"] = geometric_df["Alpha"] * geometric_df["M"]
 
 print(geometric_df[['M','P','T','Mean_CL']].corr()['Mean_CL'])
 
@@ -61,7 +59,7 @@ print(f"MAE: {mean_absolute_error(y_test, rf_predictions):.4f}")
 print(f"R2: {r2_score(y_test, rf_predictions):.4f}\n")
 
 
-xgb_model = XGBRegressor(n_estimators=100, learning_rate=0.1, random_state=42, use_label_encoder=False, eval_metric='logloss')
+xgb_model = XGBRegressor(n_estimators=100, learning_rate=0.1, random_state=42)
 
 # Train the model
 xgb_model.fit(X_train, y_train)
